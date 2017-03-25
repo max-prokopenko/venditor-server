@@ -48,9 +48,9 @@
                                 <script
                                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                     data-key="pk_test_xi5ntFl6lrIhkup2TcJJE9Fm"
-                                    data-amount="999"
+                                    data-amount="500"
                                     data-name="Venditor.io"
-                                    data-description="Widget"
+                                    data-description="Year subscription to Venditor.io"
                                     data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
                                     data-locale="auto"
                                     data-zip-code="true"
