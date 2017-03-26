@@ -27,3 +27,6 @@ Auth::routes();
 
 Route::post('/home/subscribe', ['as' => 'create.subscription', 'uses' => 'HomeController@createSubscription']);
 
+Auth::routes();
+
+Route::resource('/loader', 'LoadController');
