@@ -27,7 +27,8 @@ class LoadController extends Controller
      */
     public function index()
     {
-        $companies =  DB::table('companies')->simplePaginate(15);
+        $time = time();
+        $companies =  DB::table('companies')->where('registrationDate', date("Y-m-d", mktime(0,0,0,date("n", $time),date("j",$time)- 2 ,date("Y", $time))))->simplePaginate(15);
         return view('loader.companies', compact('companies'));
     }
 
@@ -51,7 +52,7 @@ class LoadController extends Controller
     {
         set_time_limit(10);
 
-        MyModel::truncate();
+        Company::truncate();
         
         for ($i=0; $i <= 42; $i++) {        
             $client = new Client();
