@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('/client/{id}', 'HomeController@index');
+
 Auth::routes();
 
 Route::get('/home/subscribe', 'HomeController@subscribe');
@@ -30,3 +32,13 @@ Route::post('/home/subscribe', ['as' => 'create.subscription', 'uses' => 'HomeCo
 Auth::routes();
 
 Route::resource('/loader', 'LoadController');
+
+
+
+// API routes...
+Route::resource('/api/v1/clients', 'ClientController');
+
+Route::resource('/api/v1/events', 'EventController');
+
+Route::resource('/api/v1/bills', 'BillController');
+
