@@ -18,11 +18,15 @@ class EventController extends Controller
     {
         //$clients = Event::all()->where('user_id', Auth::user()->id);
         //Temp for frontend dev
-        $events = Event::all();
-
+        $events = Event::all()->where('user_id', 10);
+        $events_out = [];
+        foreach($events as $event) { 
+            array_push($events_out, $event);
+        }
+    
         return Response::json(array(
                     'error' => false,
-                    'events' => $events,
+                    'events' => $events_out,
                     'status_code' => 200
                 ));
     }
@@ -45,7 +49,19 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new Event;
+
+        //change to Auth::user()->id
+        $data->user_id = 10;
+        $data->client_id = 1;
+        $data->businessId = $request->businessId;
+        $data->title = $request->title;
+        $data->type = $request->type;
+        $data->info = $request->info;
+        $data->created_at = date("Y-m-d H:i:s");
+        $data->updated_at = date("Y-m-d H:i:s");
+
+        $data->save();
     }
 
     /**

@@ -18,11 +18,16 @@ class ClientController extends Controller
     {
         //$clients = Client::all()->where('user_id', Auth::user()->id);
         //Temp for frontend dev
-        $clients = Client::all();
+        $clients = Client::all()->where('user_id', 10);
+
+        $clients_out = [];
+        foreach($clients as $client) { 
+            array_push($clients_out, $client);
+        }
 
         return Response::json(array(
                     'error' => false,
-                    'clients' => $clients,
+                    'clients' => $clients_out,
                     'status_code' => 200
                 ));
     }
